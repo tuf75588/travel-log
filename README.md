@@ -5,8 +5,9 @@ A full stack app to store lists of places you have traveled.
 ## TODO
 
 - [ ] Setup server
-  - [ ] Install / Setup linter
-  - [ ] Setup express App
+  - [x] Install dependencies
+  - [x] Install / Setup linter
+  - [x] Setup express App
   - [ ] Setup Not Found and Error Middlewares
 - [ ] Model DB
   - what data will we store?
