@@ -9,9 +9,9 @@ A full stack app to store lists of places you have traveled.
   - [x] Install / Setup linter
   - [x] Setup express App
   - [ ] Setup Not Found and Error Middlewares
-- [ ] Model DB
+- [x] Model DB
   - what data will we store?
-- [ ] Setup mongoose Model(s)
+- [x] Setup mongoose Model(s)
 - [ ] POST /logs
   - Create a new log entry
 - [ ] GET /logs

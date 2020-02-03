@@ -1,20 +1,20 @@
 {
   "workbench.colorCustomizations": {
-    "activityBar.background": "#9ab3a3",
-    "activityBar.activeBorder": "#8058c7",
+    "activityBar.background": "#faa557",
+    "activityBar.activeBorder": "#047c3d",
     "activityBar.foreground": "#15202b",
     "activityBar.inactiveForeground": "#15202b99",
-    "activityBarBadge.background": "#8058c7",
+    "activityBarBadge.background": "#047c3d",
     "activityBarBadge.foreground": "#e7e7e7",
-    "titleBar.activeBackground": "#7d9d88",
-    "titleBar.inactiveBackground": "#7d9d8899",
+    "titleBar.activeBackground": "#f98a25",
+    "titleBar.inactiveBackground": "#f98a2599",
     "titleBar.activeForeground": "#15202b",
     "titleBar.inactiveForeground": "#15202b99",
-    "statusBar.background": "#7d9d88",
-    "statusBarItem.hoverBackground": "#63846e",
+    "statusBar.background": "#f98a25",
+    "statusBarItem.hoverBackground": "#e57006",
     "statusBar.foreground": "#15202b"
   },
-  "peacock.remoteColor": "#7d9d88",
+  "peacock.remoteColor": "#f98a25",
   "cSpell.words": [
     "middlewares"
   ]

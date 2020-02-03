@@ -7,9 +7,22 @@ const middlewares = require('./middlewares');
 require('dotenv').config();
 
 const app = express();
-const db = mongoose.connect(process.env.MONGO_URL, {
+mongoose.connect(`mongodb://${process.env.MONGO_URL}/`, {
+  user: process.env.DB_USER,
+  pass: process.env.DB_PASS,
+  dbName: process.env.DB_NAME,
   useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true,
 });
+
+// #region
+const { connection: db } = mongoose;
+db.on('connected', () => {
+  console.log('database connected!');
+});
+// #endregion
 
 app.use(
   cors({
@@ -32,5 +45,3 @@ const port = process.env.PORT || 5000;
 const server = app.listen(port, () => {
   console.log('server is now listening on port ', server.address().port);
 });
-
-console.log(process.env.NODE_ENV);
