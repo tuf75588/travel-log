@@ -2,10 +2,14 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
-require('dotenv').config();
+const mongoose = require('mongoose');
 const middlewares = require('./middlewares');
+require('dotenv').config();
 
 const app = express();
+mongoose.connect('mongodb://localhost:27017', {
+  useNewUrlParser: true,
+});
 
 app.use(
   cors({
