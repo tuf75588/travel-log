@@ -12,9 +12,9 @@ A full stack app to store lists of places you have traveled.
 - [x] Model DB
   - what data will we store?
 - [x] Setup mongoose Model(s)
-- [ ] POST /logs
+- [x] POST /logs
   - Create a new log entry
-- [ ] GET /logs
+- [x] GET /logs
   - List all log entries
 - [ ] Setup client
 - [ ] Create form to add a new entry

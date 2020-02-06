@@ -25,6 +25,7 @@ db.on("connected", () => {
   console.log("database connected!");
 });
 // #endregion
+
 app.get("/", async (req, res) => {
   await db.createCollection("logs", {});
   res.json({ hello: "world!" });
