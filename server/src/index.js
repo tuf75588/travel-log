@@ -8,8 +8,8 @@ const logs = require("./api/logs");
 require("dotenv").config();
 
 const app = express();
-mongoose.connect(`mongodb://${process.env.MONGO_URL}/`, {
-  dbName: process.env.DB_NAME,
+mongoose.connect(`mongodb://localhost:27017/`, {
+  dbName: "travel-log",
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
