@@ -16,7 +16,7 @@ A full stack app to store lists of places you have traveled.
   - Create a new log entry
 - [x] GET /logs
   - List all log entries
-- [ ] Setup client
+- [x] Setup client
 - [ ] Create form to add a new entry
 - [ ] Setup Map SDK on client
 - [ ] List all log entries on map
