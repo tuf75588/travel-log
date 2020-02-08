@@ -9,3 +9,10 @@ body {
   width: 100vw;
   overflow: hidden;
 }
+
+.marker {
+  transform: translate(-50%, -100%);
+}
+.marker.yellow path {
+  fill: #f3b73e;
+}
