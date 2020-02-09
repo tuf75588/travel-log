@@ -16,3 +16,7 @@ body {
 .marker.yellow path {
   fill: #f3b73e;
 }
+
+.popup {
+  max-width: 300px;
+}
