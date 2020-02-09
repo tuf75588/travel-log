@@ -19,6 +19,10 @@ const App: React.FC = () => {
   const [logEntries, setLogEntries] = useState<any>([]);
   const [showPopup, setShowPopup] = useState<any>({});
 
+  const onDoubleClick = () => {
+    // we have to create a new marker when this happens
+  };
+
   useEffect(() => {
     listEntries().then(locationData => {
       setLogEntries(locationData);
@@ -34,6 +38,7 @@ const App: React.FC = () => {
       }}
       mapStyle="mapbox://styles/mapbox/dark-v10"
       mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+      onDblClick={() => console.log("double clicked!")}
     >
       {logEntries.map((entry: any) => (
         <React.Fragment key={entry._id}>
@@ -83,6 +88,9 @@ const App: React.FC = () => {
               <div className="popup">
                 <h3>{entry.title}</h3>
                 <p>{entry.comments}</p>
+                <small>
+                  visited on {new Date(entry.createdAt).toLocaleDateString()}
+                </small>
               </div>
             </Popup>
           )}
