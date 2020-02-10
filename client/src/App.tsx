@@ -16,11 +16,15 @@ const App: React.FC = () => {
     longitude: -95.665,
     zoom: 3
   });
-  const [logEntries, setLogEntries] = useState<any>([]);
+  const [logEntries, setLogEntries] = useState<[]>([]);
   const [showPopup, setShowPopup] = useState<any>({});
-
-  const onDoubleClick = () => {
-    // we have to create a new marker when this happens
+  const [addEntryLocation, setAddEntryLocation] = useState<any>(null);
+  const showAddMarkerPopup = (event: any) => {
+    const [longitude, latitude] = event.lngLat;
+    setAddEntryLocation({
+      latitude,
+      longitude
+    });
   };
 
   useEffect(() => {
@@ -28,7 +32,7 @@ const App: React.FC = () => {
       setLogEntries(locationData);
     });
   }, []);
-
+  console.log(addEntryLocation);
   return (
     <ReactMapGL
       {...viewport}
@@ -38,7 +42,7 @@ const App: React.FC = () => {
       }}
       mapStyle="mapbox://styles/mapbox/dark-v10"
       mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-      onDblClick={() => console.log("double clicked!")}
+      onDblClick={showAddMarkerPopup}
     >
       {logEntries.map((entry: any) => (
         <React.Fragment key={entry._id}>
@@ -96,6 +100,25 @@ const App: React.FC = () => {
           )}
         </React.Fragment>
       ))}
+      {addEntryLocation ? (
+        <React.Fragment>
+          <Popup
+            latitude={addEntryLocation.latitude}
+            longitude={addEntryLocation.longitude}
+            closeButton={true}
+            closeOnClick={false}
+            dynamicPosition={true}
+            onClose={() => setAddEntryLocation(null)}
+            anchor="top"
+          >
+            <div className="popup">
+              <h3>add your new visited location!</h3>
+            </div>
+          </Popup>
+        </React.Fragment>
+      ) : (
+        ""
+      )}
     </ReactMapGL>
   );
 };
