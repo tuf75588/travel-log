@@ -1,17 +1,24 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 
+type formData = {
+  title: string;
+  comments: string;
+  description: string;
+  image: string;
+  date: string;
+};
 function LogEntryForm(): any {
+  const { register, setValue, handleSubmit, errors } = useForm<FormData>();
+  const onSubmit = (formData: any) => {
+    handleSubmit(formData);
+  };
   return (
-    <form
-      onSubmit={e => {
-        e.preventDefault();
-      }}
-      className="entry-form"
-    >
+    <form onSubmit={onSubmit} className="entry-form">
       <label htmlFor="title">Title</label>
       <input type="text" name="title" required />
       <label htmlFor="comments">Comments</label>
-      <textarea name="" id="" rows={3}></textarea>
+      <textarea name="comments" id="" rows={3}></textarea>
       <label htmlFor="description">Description</label>
       <textarea name="description" rows={3}></textarea>
       <label htmlFor="image">Image</label>
