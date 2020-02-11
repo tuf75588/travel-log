@@ -33,7 +33,7 @@ const App: React.FC = () => {
       setLogEntries(locationData);
     });
   }, []);
-  console.log(addEntryLocation);
+
   return (
     <ReactMapGL
       {...viewport}
@@ -141,7 +141,10 @@ const App: React.FC = () => {
             closeOnClick={false}
           >
             <div className="popup">
-              <LogEntryForm />
+              <LogEntryForm
+                latitude={addEntryLocation.latitude}
+                longitude={addEntryLocation.longitude}
+              />
             </div>
           </Popup>
         </React.Fragment>

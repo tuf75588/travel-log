@@ -12,4 +12,15 @@ async function listEntries() {
   }
 }
 
+export async function createLogEntry(entry: any) {
+  const response = await fetch(API_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(entry)
+  });
+  return response;
+}
+
 export default listEntries;
