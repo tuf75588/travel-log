@@ -1,13 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { createLogEntry } from "../utils/API";
-type formData = {
-  title: string;
-  comments: string;
-  description: string;
-  image: string;
-  date: string;
-};
+
 function LogEntryForm({ latitude, longitude, onClose }: any): any {
   const { register, handleSubmit } = useForm<any>();
   const [loading, setLoading] = React.useState(false);
