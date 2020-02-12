@@ -28,10 +28,12 @@ const App: React.FC = () => {
     });
   };
 
+  const listAllEntries = async () => {
+    const response = await listEntries();
+    setLogEntries(response);
+  };
   useEffect(() => {
-    listEntries().then(locationData => {
-      setLogEntries(locationData);
-    });
+    listAllEntries();
   }, []);
 
   return (
@@ -144,6 +146,10 @@ const App: React.FC = () => {
               <LogEntryForm
                 latitude={addEntryLocation.latitude}
                 longitude={addEntryLocation.longitude}
+                onClose={() => {
+                  setAddEntryLocation(null);
+                  listAllEntries();
+                }}
               />
             </div>
           </Popup>

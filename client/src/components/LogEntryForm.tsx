@@ -8,15 +8,25 @@ type formData = {
   image: string;
   date: string;
 };
-function LogEntryForm({ latitude, longitude }: any): any {
+function LogEntryForm({ latitude, longitude, onClose }: any): any {
   const { register, handleSubmit } = useForm<any>();
-  const onSubmit = async (data: object) => {
-    const entry = { ...data, latitude, longitude };
-    const newEntry = await createLogEntry(entry);
-    console.log(newEntry);
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState("");
+  const onSubmit = async (data: any) => {
+    setLoading(true);
+    try {
+      const entry = { ...data, latitude, longitude };
+      await createLogEntry(entry);
+      setLoading(false);
+      onClose();
+    } catch (error) {
+      setError(error.message);
+      console.error(error);
+    }
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
+      {error && <h3 className="error">{error}</h3>}
       <label htmlFor="title">Title</label>
       <input type="text" name="title" required ref={register} />
       <label htmlFor="comments">Comments</label>
@@ -27,8 +37,8 @@ function LogEntryForm({ latitude, longitude }: any): any {
       <input name="image" type="text" ref={register} />
       <label htmlFor="visitDate">Visit Date</label>
       <input type="date" name="visitDate" ref={register} />
-      <button type="submit" className="submit-button">
-        Create Log Entry
+      <button type="submit" disabled={loading} className="submit-button">
+        {loading ? "Submitting Entry.." : "Create new entry"}
       </button>
     </form>
   );
