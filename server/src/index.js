@@ -3,20 +3,23 @@ const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
+require("dotenv").config();
 const middlewares = require("./middlewares");
 const logs = require("./api/logs");
-require("dotenv").config();
 
 const app = express();
-mongoose.connect(`mongodb://localhost:27017/`, {
-  dbName: "travel-log",
+mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
   useUnifiedTopology: true
 });
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN
+  })
+);
 app.use(morgan("common"));
 app.use(helmet());
 // #region
@@ -26,8 +29,7 @@ db.on("connected", () => {
 });
 // #endregion
 
-app.get("/", async (req, res) => {
-  await db.createCollection("logs", {});
+app.get("/", async (_, res) => {
   res.json({ hello: "world!" });
 });
 app.use("/api/logs", logs);

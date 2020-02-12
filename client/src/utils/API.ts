@@ -1,26 +1,19 @@
-const API_URL: string = "http://localhost:5000/api/logs";
+const API_URL: string = "http://localhost:1337";
 
-async function listEntries() {
-  try {
-    const response = await fetch(API_URL);
-    const entryData = await response.json();
-    return entryData;
-  } catch (error) {
-    throw new Error(error.message);
-  } finally {
-    console.log("finally!");
-  }
+export async function listLogEntries() {
+  const response = await fetch(`${API_URL}/api/logs`);
+  return response.json();
 }
 
 export async function createLogEntry(entry: any) {
-  const response = await fetch(API_URL, {
+  const response = await fetch(`${API_URL}/api/logs`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(entry)
   });
-  return response;
+  return response.json();
 }
 
-export default listEntries;
+export default listLogEntries;

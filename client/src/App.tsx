@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
-import listEntries from "./utils/API";
+import listLogEntries from "./utils/API";
 import LogEntryForm from "./components/LogEntryForm";
 const App: React.FC = () => {
   const [viewport, setViewport] = useState<{
@@ -29,7 +29,7 @@ const App: React.FC = () => {
   };
 
   const listAllEntries = async () => {
-    const response = await listEntries();
+    const response = await listLogEntries();
     setLogEntries(response);
   };
   useEffect(() => {
