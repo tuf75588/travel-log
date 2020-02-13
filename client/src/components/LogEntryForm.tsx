@@ -21,7 +21,8 @@ function LogEntryForm({ latitude, longitude, onClose }: any): any {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
       {error && <h3 className="error">{error}</h3>}
-
+      <label htmlFor="apiKey">API KEY</label>
+      <input type="password" name="apiKey" ref={register} required />
       <label htmlFor="title">Title</label>
       <input type="text" name="title" required ref={register} />
       <label htmlFor="comments">Comments</label>
