@@ -95,6 +95,7 @@ const App: React.FC = () => {
               <div className="popup">
                 <h3>{entry.title}</h3>
                 <p>{entry.comments}</p>
+                <p>{entry.description}</p>
                 <small>
                   visited on {new Date(entry.createdAt).toLocaleDateString()}
                 </small>

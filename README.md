@@ -21,4 +21,4 @@ A full stack app to store lists of places you have traveled.
 - [x] Setup Map SDK on client
 - [x] List all log entries on map
 
-[Live deployment link!](https://travel-logs.now.sh/)
+[Live deployment link!](https://travel-logging.now.sh)
