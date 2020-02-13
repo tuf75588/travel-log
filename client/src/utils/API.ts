@@ -1,4 +1,7 @@
-const API_URL: string = "http://localhost:1337";
+const API_URL: string =
+  window.location.hostname === "localhost"
+    ? "http://localhost:1337"
+    : "https://travel-logger-api.now.sh";
 
 export async function listLogEntries() {
   const response = await fetch(`${API_URL}/api/logs`);
@@ -17,13 +20,21 @@ export async function createLogEntry(entry: any) {
     },
     body: JSON.stringify(entry)
   });
-  let json = await response.json();
+  let json;
+  if (response.headers.get("content-type")?.includes("text/html")) {
+    const message = await response.text();
+    json = {
+      message
+    };
+  } else {
+    json = await response.json();
+  }
   if (response.ok) {
     return json;
-  } else {
-    const error = new Error(json.message);
-    return error;
   }
+  const error: any = new Error(json.message);
+  error.response = json;
+  throw error;
 }
 
 export default listLogEntries;

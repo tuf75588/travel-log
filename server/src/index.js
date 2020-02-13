@@ -15,11 +15,7 @@ mongoose.connect(process.env.DATABASE_URL, {
   useUnifiedTopology: true
 });
 app.use(express.json());
-app.use(
-  cors({
-    origin: process.env.CORS_ORIGIN
-  })
-);
+app.use(cors());
 app.use(morgan("common"));
 app.use(helmet());
 // #region
